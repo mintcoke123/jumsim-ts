@@ -15,7 +15,7 @@ export interface AddRestaurantModalProps {
 }
 
 export interface RestaurantDetailModalProps {
-  setIsDetailModalOpen: (open: boolean) => void;
+  setIsDetailModalOpen: (isOpen: boolean) => void;
   selectedRestaurant?: Restaurant;
 }
 
