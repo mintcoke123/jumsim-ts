@@ -1,6 +1,7 @@
 import RestaurantDetailModal from "../components/Asides/RestaurantDetailModal";
 import AddRestaurantModal from "../components/Asides/AddRestaurantModal";
-
+import React from "react";
+import { AsideContainerProps } from "../types/types";
 
 function AsideContainer({
   isDetailModalOpen,
@@ -9,7 +10,7 @@ function AsideContainer({
   isAddModalOpen,
   setIsAddModalOpen,
   addRestaurantData,
-}) {
+}: AsideContainerProps): JSX.Element {
   return (
     <aside>
       {isDetailModalOpen && (
@@ -24,7 +25,6 @@ function AsideContainer({
           addRestaurantData={addRestaurantData}
         />
       )}
-
     </aside>
   );
 }

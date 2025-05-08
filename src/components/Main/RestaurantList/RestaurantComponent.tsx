@@ -1,4 +1,6 @@
+import React from "react";
 import styles from "../../../css/Restaurant.module.css";
+import { RestaurantComponentProps } from "../../../types/types.ts";
 
 function RestaurantComponent({
   id,
@@ -8,16 +10,14 @@ function RestaurantComponent({
   description,
   selectClickedRestaurant,
   setIsDetailModalOpen,
-}) {
+}: RestaurantComponentProps): JSX.Element {
   function handleShowClickedRestaurant() {
     selectClickedRestaurant(id);
     setIsDetailModalOpen(true);
   }
 
-
   return (
     <li className={styles.restaurant} onClick={handleShowClickedRestaurant}>
-
       <div className={styles.restaurantCategory}>
         <img
           src={categoryIcon}

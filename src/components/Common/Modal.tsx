@@ -1,6 +1,15 @@
 import styles from "../../css/Modal.module.css";
+import React from "react";
+import { ModalProps } from "../../types/types";
 
-function Modal({ handleCloseModal, children, modalTitle }) {
+
+
+
+function Modal({
+  handleCloseModal,
+  children,
+  modalTitle,
+}: ModalProps): JSX.Element {
   return (
     <div className={styles.modalOpen}>
       <div className={styles.modalBackdrop} onClick={handleCloseModal} />

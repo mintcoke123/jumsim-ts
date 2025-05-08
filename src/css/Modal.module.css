@@ -4,7 +4,7 @@
 
 .modalOpen {
 
-  display: none;
+  display: flex;
 
 }
 

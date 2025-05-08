@@ -1,8 +1,10 @@
 import styles from "../../css/Header.module.css";
-import { TEXT } from "../Constants/messages";
-import { BUTTON_ICONS } from "../Constants/icons";
+import { TEXT } from "../Constants/messages.ts";
+import { BUTTON_ICONS } from "../Constants/icons.ts";
+import React from "react";
+import { HeaderProps } from "../../types/types";
 
-function Header({ setIsAddModalOpen }) {
+function Header({ setIsAddModalOpen }: HeaderProps): JSX.Element {
   const handleOpenAddModal = () => {
     setIsAddModalOpen(true);
   };

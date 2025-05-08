@@ -1,24 +1,31 @@
 import { useState } from "react";
 import styles from "../../css/Modal.module.css";
-import { TEXT } from "../Constants/messages";
-import { ADD_RESTAURANT_CATEGORY_FILTER } from "../Constants/category";
-import { CATEGORY_ICONS } from "../Constants/icons";
+import { TEXT } from "../Constants/messages.ts";
+import { ADD_RESTAURANT_CATEGORY_FILTER } from "../Constants/category.ts";
+import { CATEGORY_ICONS } from "../Constants/icons.ts";
 import Modal from "../Common/Modal";
 import ModalButton from "../Common/ModalButton";
+import { Restaurant, AddRestaurantModalProps } from "../../types/types.ts"
+import React from "react";
 
-function AddRestaurantModal({ setIsAddModalOpen, addRestaurantData }) {
-  const [category, setCategory] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+function AddRestaurantModal({
+  setIsAddModalOpen,
+  addRestaurantData,
+}: AddRestaurantModalProps): JSX.Element {
+  const [category, setCategory] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
 
-  function handleCloseModal() {
+  function handleCloseModal(): void {
     setIsAddModalOpen(false);
   }
 
-  const handleSubmitRestaurantData = (event) => {
+  const handleSubmitRestaurantData = (
+    event: React.FormEvent<HTMLFormElement>
+  ): void => {
     event.preventDefault();
 
-    const newRestaurant = {
+    const newRestaurant: Restaurant = {
       id: Date.now(),
       category,
       name,
@@ -30,6 +37,7 @@ function AddRestaurantModal({ setIsAddModalOpen, addRestaurantData }) {
     addRestaurantData(newRestaurant);
     setIsAddModalOpen(false);
   };
+
   return (
     <Modal
       handleCloseModal={handleCloseModal}
@@ -49,15 +57,15 @@ function AddRestaurantModal({ setIsAddModalOpen, addRestaurantData }) {
             required
           >
             <option value="">{TEXT.MODAL_CATEGORY_PLACEHOLDER}</option>
-            {ADD_RESTAURANT_CATEGORY_FILTER.map((category) => (
-              <option key={category} value={category}>
-                {category}
+            {ADD_RESTAURANT_CATEGORY_FILTER.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
               </option>
             ))}
           </select>
         </div>
 
-        {/* 음식점 이름 */}
+        {/* 이름 */}
         <div className={`${styles.formItem} ${styles.formItemRequired}`}>
           <label htmlFor="name" className="text-caption">
             {TEXT.NAME_LABEL}
@@ -80,8 +88,8 @@ function AddRestaurantModal({ setIsAddModalOpen, addRestaurantData }) {
           <textarea
             name="description"
             id="description"
-            cols="30"
-            rows="5"
+            cols={30}
+            rows={5}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -91,7 +99,6 @@ function AddRestaurantModal({ setIsAddModalOpen, addRestaurantData }) {
         </div>
 
         {/* 추가 버튼 */}
-
         <ModalButton
           buttonType="submit"
           buttonText={TEXT.MODAL_ADD_BUTTON_TEXT}
