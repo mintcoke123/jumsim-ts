@@ -38,7 +38,7 @@ export interface HeaderProps {
 export interface RestaurantComponentProps {
   id: number;
   category: string;
-  categoryIcon: any; 
+  categoryIcon: string; 
   name: string;
   description: string;
   selectClickedRestaurant: (id: number) => void;
