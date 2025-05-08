@@ -4,7 +4,7 @@ export interface Restaurant {
   id: number;
   category: string;
   alt: string;
-  categoryIcon: any;
+  categoryIcon: string;
   name: string;
   description: string;
 }
